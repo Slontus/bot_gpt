@@ -2,8 +2,6 @@ import openai
 from dotenv import load_dotenv
 import os
 
-openai.organization = 'org-r02267ht5aYuBT4rnkCJxf1X'
-
 
 def input_text():
     _prompt = input("Input your request here:\n")
@@ -29,6 +27,7 @@ def text_format(text):
 
 def openai_init():
     load_dotenv()
+    openai.organization = os.environ['GPT_organization']
     openai.api_key = os.environ['GPT_API_key']
 
 
@@ -47,10 +46,6 @@ def gpt_request(prompt):
 
 
 if __name__ == '__main__':
-    # openai.api_key = os.environ["API_key"]
-    #models = json.loads(openai.Model.list())
-    #print(models["data"][0])
-
     while True:
         prompt = input_text()
         print('GPT response:')
